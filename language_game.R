@@ -1,4 +1,15 @@
-setwd("C://Users//MMoh//Documents//Runs")
+# **************************************************
+# Language game
+# Author: Mahtab Mohammadi
+# Date: May 1, 2016
+# Based on:
+# https://www.staff.ncl.ac.uk/daniel.nettle/ca1.pdf
+# *************************************************
+
+
+
+
+setwd("//Users//MMoh//Documents//Runs")
 rm(list=ls())
 
 library(knitr)
@@ -236,7 +247,7 @@ COOP.vs.POLYGLOT <- function( i, j, iters){
 	} 
 	else {
 		if (iters > memspan){
-			#!!!! <<- à mentionner dans le rapport
+			#!!!! <<- Ã  mentionner dans le rapport
 			organism[[j]]$wealth <<- organism[[j]]$wealth + T
 			organism[[i]]$wealth <<- organism[[i]]$wealth + S
 			organism[[j]]$dial <<- organism[[i]]$dial
