@@ -40,17 +40,6 @@ P=0
 S=-1
 action <- c("Gift","noGift")
 
-
-#Payoffs of player 1
-payoff.mat.alter <- matrix(c(R,S,T,P),nrow=2,ncol=2)
-rownames(payoff.mat.alter) <- c("Gift","NoGift")
-colnames(payoff.mat.alter) = rownames(payoff.mat.alter)
-
-#Payoffs of player 2
-payoff.mat.ego <- matrix(c(R,S,T,P),nrow=2,ncol=2)
-rownames(payoff.mat.ego) <- c("Gift","NoGift")
-colnames(payoff.mat.ego) = rownames(payoff.mat.ego)
-
 #Visualization of payoff table (package knitr) for latex
 pair <- function(x,y) sprintf("(%d,%d)", x,y)
 all_pairs <- c(pair(R,R), pair(S,T), pair(T,S), pair(P,P))
@@ -59,10 +48,9 @@ dimnames(payoff.mat)[[1]] <- c("Gift","NoGift")
 dimnames(payoff.mat)[[2]] = dimnames(payoff.mat)[[1]]
 kable(payoff.mat, format="latex", align='c')
 
-#*********************
-# Functions and 
-# some main operations
-#*********************
+#**********
+# Functions
+#**********
 
 # Generate the population assigning 5 attributes to each member:
 # 1. Wealth
@@ -166,9 +154,9 @@ encounter.mat <- function(n, Beta){
 	#Symmetrize the encounter matrix
 	encounter_min <<- encounter*t(encounter)
 }
-#*********************
+#**********************
 # Strategies encounters 
-#*********************
+#**********************
 
 CHEAT.vs.COOP <- function(i, j, iters){
 	if (iters == 1){
