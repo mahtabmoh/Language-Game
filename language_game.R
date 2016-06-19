@@ -16,6 +16,12 @@ library(knitr)
 library(openssl)
 library(MASS)
 library(ggplot2)
+library(foreign)
+library(cluster)
+library(gclus)
+library(reshape)
+
+
 
 #*****************
 # Game Setup
@@ -584,6 +590,7 @@ lang.game <- function(iter, n, m, Beta){
 }
 
 # Call the main function
+# Run the game
 lang.game(200, 100, repr_rate, Beta)
 
 # Each run gives a row in the result matrix
@@ -594,18 +601,13 @@ run <- 1
 array1 <- c(memspan,Beta,wealth.reset,fav.pos, (dial_change_rate/100), (repr_rate/100) ,abund_init, abund_final)
 names(array1) <- c("memSpan", "Beta","wealthReset", "favPos", "dialUpdateProb", "reprRate", "cheatInit","coopInit","polyInit","mimInit","cheatFinal","coopFinal","polyFinal","mimFinal")
 row1<- t(as.matrix(array1))
-write.csv(row1, "row11.csv")
+write.csv(row1, "row1.csv")
 
 # Read the saved dataframes for plotting 
 
-# Call libraries
-library(foreign)
-library(cluster)
-library(gclus)
-library(car)
-library(MASS)
-library(ggplot2)
-library(reshape)
+#********************
+# Regression Analysis
+#********************
 
 Dir <- file.choose()
 DataSet <- read.csv(Dir, header=TRUE, sep=";")
